@@ -9,7 +9,7 @@ const Layout = ({ children }: PropsType) => {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      <main className="bg-white">{children}</main>
     </div>
   );
 };
