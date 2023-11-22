@@ -7,9 +7,9 @@ interface PropsType {
 
 const Layout = ({ children }: PropsType) => {
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <Header />
-      <main className="bg-white">{children}</main>
+      <main className="bg-white flex-1">{children}</main>
     </div>
   );
 };
