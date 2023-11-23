@@ -3,7 +3,7 @@ import Layout from "../component/layout";
 const Home = () => {
   return (
     <Layout>
-      <div className="h-screen bg-red-100"></div>
+      <div className="bg-red-100">hello</div>
     </Layout>
   );
 };
