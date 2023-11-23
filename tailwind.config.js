@@ -6,6 +6,9 @@ export default {
       colors: {
         primaryBlue: "#29ABE2",
       },
+      height: {
+        screen: ['100vh', '100dvh'],
+      }
     },
   },
   plugins: [],
