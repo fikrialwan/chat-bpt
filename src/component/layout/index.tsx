@@ -8,7 +8,7 @@ interface PropsType {
 
 const Layout = ({ children }: PropsType) => {
   return (
-    <div className="max-h-screen h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <Header />
       <main className="bg-white flex-1 overflow-auto">{children}</main>
       <ChatField />
