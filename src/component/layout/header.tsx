@@ -3,7 +3,7 @@ import ThreeDotsIcon from "../icons/three-dots";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 py-3 px-4 bg-primaryBlue flex flex-row justify-between items-center shadow-md text-white">
+    <header className="py-3 px-4 bg-primaryBlue flex flex-row justify-between items-center shadow-md text-white">
       <div className="flex flex-row gap-4 justify-start items-center">
         <div className="w-12 h-12 relative">
           <img
