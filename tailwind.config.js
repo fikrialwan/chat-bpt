@@ -7,7 +7,7 @@ export default {
         primaryBlue: "#29ABE2",
       },
       height: {
-        screen: ["100vh", "100dvh", "-webkit-fill-available"],
+        screen: ["100vh", "100dvh"],
       },
       maxHeight: {
         screen: ["100vh", "100dvh", "-webkit-fill-available"],
