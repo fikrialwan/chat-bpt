@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .h-viewport-mobile {
+    @apply h-screen;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+}
