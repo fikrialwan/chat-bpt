@@ -5,7 +5,7 @@ import Container from "../shared/container";
 const ChatField = () => {
   return (
     <Container>
-      <div className="flex items-end w-full gap-4 py-3">
+      <div className="flex items-end w-full gap-4 py-2">
         <ReactTextareaAutosize
           className="flex-1 resize-none py-4 px-8 rounded-[32px] bg-white outline-none drop-shadow-2xl"
           minRows={1}
