@@ -14,7 +14,7 @@ const Message = ({ children, isUser }: MessageProps & { isUser: boolean }) => {
 
 const MessageUser = ({ children }: MessageProps) => {
   return (
-    <p className="px-6 py-3 rounded-3xl rounded-tr-none bg-primaryBlue text-white self-end">
+    <p className="px-6 py-3 rounded-3xl rounded-tr-none bg-primaryBlue text-white self-end whitespace-pre-line">
       {children}
     </p>
   );
@@ -27,7 +27,7 @@ const MessageAI = ({ children }: MessageProps) => {
         src={profile}
         className="w-12 h-12 rounded-full border-2 outline-white"
       />
-      <p className="px-6 py-3 rounded-3xl rounded-bl-none bg-primaryGray">
+      <p className="px-6 py-3 rounded-3xl rounded-bl-none bg-primaryGray whitespace-pre-line">
         {children}
       </p>
     </div>
