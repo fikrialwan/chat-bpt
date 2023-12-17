@@ -12,8 +12,8 @@ const ChatField = () => {
           maxRows={5}
           placeholder="Write something"
         />
-        <button className="py-4 px-4 bg-primaryBlue hover:bg-primaryBlue/90 text-white rounded-full font-semibold">
-          <SendIcon color="white" />
+        <button className="h-14 w-14 flex items-center justify-center bg-primaryBlue hover:bg-primaryBlue/90 text-white rounded-full font-semibold">
+          <SendIcon color="white" height={28} width={28} />
         </button>
       </div>
     </Container>
