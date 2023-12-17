@@ -4,7 +4,7 @@ import Container from "../shared/container";
 
 const Header = () => {
   return (
-    <header className="bg-white border-b border-gray-200 text-black">
+    <header className="bg-white border-b border-gray-200 text-black py-3">
       <Container>
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-row gap-4 justify-start items-center">
