@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Layout>
       <Container>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 pt-4">
           {dummyMessage.map(({ message, isUser }) => (
             <Message isUser={isUser || false}>{message}</Message>
           ))}
