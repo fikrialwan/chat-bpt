@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primaryBlue: "#29ABE2",
+        primaryGray: '#EEEEEE'
       },
       height: {
         screen: ["100vh", "100dvh"],
