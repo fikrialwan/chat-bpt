@@ -42,6 +42,7 @@ const ChatField = () => {
           placeholder="Write something"
           onKeyDown={handleKeyPressEnter}
           onKeyUp={handleKeyPressEnter}
+          onKeyPress={handleKeyPressEnter}
           ref={textareaRef}
         />
         <button
