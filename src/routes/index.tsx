@@ -9,8 +9,10 @@ const Home = () => {
     <Layout>
       <Container>
         <div className="flex flex-col gap-4 pt-4">
-          {dummyMessage.map(({ message, isUser }) => (
-            <Message isUser={isUser || false}>{message}</Message>
+          {dummyMessage.map(({ message, isUser }, index: number) => (
+            <Message key={index} isUser={isUser || false}>
+              {message}
+            </Message>
           ))}
         </div>
         <AlwaysScrollToBottom />
