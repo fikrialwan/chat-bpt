@@ -2,13 +2,41 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 import SendIcon from "../icons/send";
 import Container from "../shared/container";
 import React, { useRef } from "react";
+import { messageModel } from "../../model/message";
+import { useMessages } from "../../hooks/message";
+import { messageServices } from "../../services/message";
 
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const { setMessages } = useMessages();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("submit");
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const data = Object.fromEntries(formData.entries());
+
+      if (data?.message && typeof data.message === "string") {
+        messageModel.append({
+          message: data.message,
+          isUser: true,
+        });
+
+        setMessages(messageModel.get());
+
+        const response = await messageServices.send(data.message);
+
+        messageModel.append({
+          message: response.answer,
+          isUser: false,
+        });
+
+        setMessages(messageModel.get());
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
     if (textareaRef.current) {
       textareaRef.current.value = "";
@@ -20,7 +48,6 @@ const ChatField = () => {
   ) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      console.log("submit");
       event.currentTarget.blur();
 
       if (textareaRef.current) {
@@ -43,6 +70,7 @@ const ChatField = () => {
           onKeyDown={handleKeyPressEnter}
           onKeyUp={handleKeyPressEnter}
           ref={textareaRef}
+          name="message"
         />
         <button
           className="h-14 w-14 flex items-center justify-center bg-primaryBlue hover:bg-primaryBlue/90 text-white rounded-full font-semibold"
