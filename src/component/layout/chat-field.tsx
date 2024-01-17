@@ -1,4 +1,5 @@
 import ReactTextareaAutosize from "react-textarea-autosize";
+import { isMobile } from "react-device-detect";
 import SendIcon from "../icons/send";
 import Container from "../shared/container";
 import React, { useRef } from "react";
@@ -8,6 +9,7 @@ import { messageServices } from "../../services/message";
 
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const { setMessages } = useMessages();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,6 +27,10 @@ const ChatField = () => {
 
         setMessages(messageModel.get());
 
+        if (textareaRef.current) {
+          textareaRef.current.value = "";
+        }
+
         const response = await messageServices.send(data.message);
 
         messageModel.append({
@@ -37,21 +43,17 @@ const ChatField = () => {
     } catch (error) {
       console.log(error);
     }
-
-    if (textareaRef.current) {
-      textareaRef.current.value = "";
-    }
   };
 
   const handleKeyPressEnter = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === "Enter" && (!event.shiftKey || isMobile)) {
       event.preventDefault();
       event.currentTarget.blur();
 
-      if (textareaRef.current) {
-        textareaRef.current.value = "";
+      if (buttonRef.current) {
+        buttonRef.current.click();
       }
     }
   };
@@ -75,6 +77,7 @@ const ChatField = () => {
         <button
           className="h-14 w-14 flex items-center justify-center bg-primaryBlue hover:bg-primaryBlue/90 text-white rounded-full font-semibold"
           type="submit"
+          ref={buttonRef}
         >
           <SendIcon color="white" height={28} width={28} />
         </button>
