@@ -7,8 +7,6 @@ import { useMessages } from "../hooks/message";
 const Home = () => {
   const { messages } = useMessages();
 
-  console.log(messages);
-
   return (
     <Layout>
       <Container>
@@ -32,7 +30,7 @@ const AlwaysScrollToBottom = () => {
       elementRef.current.scrollIntoView();
     }
   }, []);
-  return <div ref={elementRef} />;
+  return <div id="bottom" ref={elementRef} />;
 };
 
 export default Home;

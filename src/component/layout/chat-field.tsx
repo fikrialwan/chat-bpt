@@ -6,6 +6,7 @@ import React, { useRef } from "react";
 import { messageModel } from "../../model/message";
 import { useMessages } from "../../hooks/message";
 import { messageServices } from "../../services/message";
+import { jumpToDown } from "../../utils/jump-to-down";
 
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -26,6 +27,7 @@ const ChatField = () => {
         });
 
         setMessages(messageModel.get());
+        jumpToDown();
 
         if (textareaRef.current) {
           textareaRef.current.value = "";
@@ -39,6 +41,8 @@ const ChatField = () => {
         });
 
         setMessages(messageModel.get());
+
+        jumpToDown();
       }
     } catch (error) {
       console.log(error);
