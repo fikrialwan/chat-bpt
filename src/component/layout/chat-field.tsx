@@ -1,7 +1,7 @@
 import ReactTextareaAutosize from "react-textarea-autosize";
 import SendIcon from "../icons/send";
 import Container from "../shared/container";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { messageModel } from "../../model/message";
 import { useMessages } from "../../hooks/message";
 import { messageServices } from "../../services/message";
@@ -11,40 +11,45 @@ const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const { setMessages } = useMessages();
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      const formData = new FormData(event.currentTarget);
-      const data = Object.fromEntries(formData.entries());
+    if (!isLoading) {
+      try {
+        setLoading(true);
+        const formData = new FormData(event.currentTarget);
+        const data = Object.fromEntries(formData.entries());
 
-      if (data?.message && typeof data.message === "string") {
-        messageModel.append({
-          message: data.message,
-          isUser: true,
-        });
+        if (data?.message && typeof data.message === "string") {
+          messageModel.append({
+            message: data.message,
+            isUser: true,
+          });
 
-        setMessages(messageModel.get());
-        jumpToDown();
+          setMessages(messageModel.get());
+          jumpToDown();
 
-        if (textareaRef.current) {
-          textareaRef.current.value = "";
+          if (textareaRef.current) {
+            textareaRef.current.value = "";
+          }
+
+          const response = await messageServices.send(data.message);
+
+          messageModel.append({
+            message: response.answer,
+            isUser: false,
+          });
+
+          setMessages(messageModel.get());
+
+          setLoading(false);
+          jumpToDown();
         }
-
-        const response = await messageServices.send(data.message);
-
-        messageModel.append({
-          message: response.answer,
-          isUser: false,
-        });
-
-        setMessages(messageModel.get());
-
-        jumpToDown();
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
