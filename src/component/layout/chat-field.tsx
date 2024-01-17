@@ -51,7 +51,7 @@ const ChatField = () => {
   const handleKeyPressEnter = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
-    if (["Enter", "NumpadEnter"].includes(event.key) && !event.shiftKey) {
+    if (["Enter", "NumpadEnter"].includes(event.key)) {
       event.preventDefault();
       event.currentTarget.blur();
 
