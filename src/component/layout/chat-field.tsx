@@ -1,5 +1,4 @@
 import ReactTextareaAutosize from "react-textarea-autosize";
-import { isMobile } from "react-device-detect";
 import SendIcon from "../icons/send";
 import Container from "../shared/container";
 import React, { useRef } from "react";
@@ -52,7 +51,7 @@ const ChatField = () => {
   const handleKeyPressEnter = (
     event: React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
-    if (event.key === "Enter" && (!event.shiftKey || isMobile)) {
+    if (["Enter", "NumpadEnter"].includes(event.key) && !event.shiftKey) {
       event.preventDefault();
       event.currentTarget.blur();
 
