@@ -6,6 +6,7 @@ import { messageModel } from "../../model/message";
 import { useMessages } from "../../hooks/message";
 import { messageServices } from "../../services/message";
 import { jumpToDown } from "../../utils/jump-to-down";
+import { messageLocalstorage } from "../../utils/localstorage";
 
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -34,8 +35,13 @@ const ChatField = () => {
           if (textareaRef.current) {
             textareaRef.current.value = "";
           }
-
-          const response = await messageServices.send(data.message);
+          var historyString = messageLocalstorage.get();
+          var history = historyString ? JSON.parse(historyString) : null;
+          if (history !== null) {
+            history = history.slice(-11);
+            history.pop();
+          }
+          const response = await messageServices.send(data.message, history);
 
           messageModel.append({
             message: response.answer,
