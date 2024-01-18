@@ -1,4 +1,5 @@
 import profile from "../../assets/chat-bpt-profile.jpg";
+import { LOGIN_FLAG } from "../../config/constants";
 import ThreeDotsIcon from "../icons/three-dots";
 import Container from "../shared/container";
 
@@ -22,7 +23,8 @@ const Header = () => {
               <p className="text-sm font-light text-green-500">Online</p>
             </div>
           </div>
-          <ThreeDotsIcon className="w-8 h-8" color="black" />
+
+          {!LOGIN_FLAG && <ThreeDotsIcon className="w-8 h-8" color="black" />}
         </div>
       </Container>
     </header>
