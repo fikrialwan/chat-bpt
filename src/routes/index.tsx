@@ -5,7 +5,7 @@ import Message from "../component/shared/message";
 import { useMessages } from "../hooks/message";
 
 const Home = () => {
-  const { messages } = useMessages();
+  const { messages, isLoading } = useMessages();
 
   return (
     <Layout>
@@ -16,13 +16,15 @@ const Home = () => {
               {message}
             </Message>
           ))}
-          {/* <Message isUser={false}>
-            <div className="flex gap-1 pt-2 pb-1 items-center">
-              <div className="dot" />
-              <div className="dot" />
-              <div className="dot" />
-            </div>
-          </Message> */}
+          {isLoading && (
+            <Message isUser={false}>
+              <div className="flex gap-1 pt-2 pb-1 items-center">
+                <div className="dot" />
+                <div className="dot" />
+                <div className="dot" />
+              </div>
+            </Message>
+          )}
         </div>
         <AlwaysScrollToBottom />
       </Container>

@@ -1,7 +1,7 @@
 import ReactTextareaAutosize from "react-textarea-autosize";
 import SendIcon from "../icons/send";
 import Container from "../shared/container";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { messageModel } from "../../model/message";
 import { useMessages } from "../../hooks/message";
 import { messageServices } from "../../services/message";
@@ -11,8 +11,7 @@ import { messageLocalstorage } from "../../utils/localstorage";
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const { setMessages } = useMessages();
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const { setMessages, isLoading, setLoading } = useMessages();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
