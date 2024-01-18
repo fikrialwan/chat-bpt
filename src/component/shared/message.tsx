@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import profile from "../../assets/chat-bpt-profile.jpg";
 
 interface MessageProps {
-  children: string;
+  children: ReactNode;
 }
 
 const Message = ({ children, isUser }: MessageProps & { isUser: boolean }) => {

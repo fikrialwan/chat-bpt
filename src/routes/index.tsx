@@ -16,6 +16,13 @@ const Home = () => {
               {message}
             </Message>
           ))}
+          {/* <Message isUser={false}>
+            <div className="flex gap-1 pt-2 pb-1 items-center">
+              <div className="dot" />
+              <div className="dot" />
+              <div className="dot" />
+            </div>
+          </Message> */}
         </div>
         <AlwaysScrollToBottom />
       </Container>
