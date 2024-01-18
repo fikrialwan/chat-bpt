@@ -34,8 +34,8 @@ const ChatField = () => {
           if (textareaRef.current) {
             textareaRef.current.value = "";
           }
-          var historyString = messageLocalstorage.get();
-          var history = historyString ? JSON.parse(historyString) : null;
+          const historyString = messageLocalstorage.get();
+          let history = historyString ? JSON.parse(historyString) : null;
           if (history !== null) {
             history = history.slice(-11);
             history.pop();
