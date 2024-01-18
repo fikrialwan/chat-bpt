@@ -6,10 +6,13 @@ import { MessageContextType } from "../../types/context";
 
 const MessageProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<MessagesType>(messageModel.get());
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const providerValue: MessageContextType = {
     messages,
+    isLoading,
     setMessages: () => setMessages(messageModel.get()),
+    setLoading,
   };
 
   return (
