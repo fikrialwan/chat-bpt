@@ -1,0 +1,11 @@
+version: "1"
+
+services:
+  chat-bpt:
+    container_name: chat-bpt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 5000:80
