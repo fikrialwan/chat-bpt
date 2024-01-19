@@ -1,30 +1,85 @@
-# React + TypeScript + Vite
+# CHAT BPT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chat bot that you can ask everything about program Yayasan Amaliah Astra or Astra Gema Islami
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Dependencies
 
-## Expanding the ESLint configuration
+Use [pnpm](https://pnpm.io) to improve productivity and replace npm, so make
+sure [pnpm is installed](https://pnpm.io/installation#using-npm):
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```sh
+npm i -g pnpm
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To run the app locally, make sure the project's local dependencies are
+installed:
+
+```sh
+pnpm install
+```
+
+### Environment Variables
+
+Create the `.env` file from `.env.example`. This is the one for local
+development, not production
+
+```sh
+cp -i .env.example .env
+```
+
+Configure the required environment variables if on local, otherwise in the
+project settings on other environments.
+
+Required:
+
+- `VITE_BASE_URL`: For example, `https://chatapi.id`
+
+Optional:
+- `VITE_LOGIN_FLAG`: Set to `false` if you want to hide login page
+
+### Development
+
+Finally, develop the app while running the development server:
+
+```sh
+pnpm dev
+```
+
+Open <http://localhost:5173> and it's ready!
+
+### Build
+
+Check if the build is fine. This als be used to build the app for production.
+
+```sh
+pnpm build
+```
+
+After that you can run the build result:
+
+```sh
+pnpm preview
+```
+
+Open <http://localhost:4173> and it's ready!
+
+
+or if you have docker you can instantly use this command:
+
+```sh
+docker compose up -d
+```
+
+Grab a coffee, it will automatically build and run on <http://localhost:5000>
+
+## Tech Stack 
+
+- [Vite](https://vitejs.dev)
+- [React](https://react.dev)
+- [TypeScript](https://typescriptlang.org)
+- [Node.js](https://nodejs.org)
+- [pnpm](https://pnpm.io)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Docker](https://docker.com) and [Docker Compose](https://docs.docker.com/compose)
