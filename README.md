@@ -72,7 +72,7 @@ or if you have docker you can instantly use this command:
 docker compose up -d
 ```
 
-Grab a coffee, it will automatically build and run on <http://localhost:5000>
+Grab a coffee, it will automatically build and run on <http://localhost:5002>
 
 ## Tech Stack 
 
