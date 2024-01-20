@@ -27,12 +27,6 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
         type: "image/png",
         purpose: "apple touch icon",
       },
-      {
-        src: "/safari-pinned-tab.svg",
-        sizes: "225x225",
-        type: "image/png",
-        purpose: "any maskable",
-      },
     ],
     theme_color: "#EEEEEE",
     background_color: "#29ABE2",
