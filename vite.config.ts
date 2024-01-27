@@ -6,10 +6,9 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: "prompt",
   includeAssets: ["favicon.ico", "apple-touch-icon.png"],
   manifest: {
-    name: "Chat BPT",
-    short_name: "Chat BPT",
-    description:
-      "Chat bot that you can ask everything about program Yayasan Amaliah Astra or Astra Gema Islami",
+    name: "ChatBPT",
+    short_name: "ChatBPT",
+    description: "Jamaah Bertanya, Bang Pitung Menjawab",
     icons: [
       {
         src: "/android-chrome-192x192.png",
