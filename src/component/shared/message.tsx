@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import profile from "../../assets/chat-bpt-profile.jpg";
+import profile from "../../assets/chat-bpt-profile.png";
 
 interface MessageProps {
   children: ReactNode;

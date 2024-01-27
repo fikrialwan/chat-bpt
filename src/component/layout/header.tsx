@@ -1,4 +1,4 @@
-import profile from "../../assets/chat-bpt-profile.jpg";
+import profile from "../../assets/chat-bpt-profile.png";
 import { LOGIN_FLAG } from "../../config/constants";
 import ThreeDotsIcon from "../icons/three-dots";
 import Container from "../shared/container";
