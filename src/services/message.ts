@@ -11,7 +11,7 @@ export const messageServices = {
 
       const res = await instance.post(apiUrl.send, formData, {
         headers: {
-          Authorization: `Bearer ${accessTokenLocalstorage.get()}`,
+          token: accessTokenLocalstorage.get(),
         },
       });
 
