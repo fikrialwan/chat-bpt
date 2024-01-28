@@ -20,8 +20,8 @@
       "purpose": "apple touch icon"
     }
   ],
-  "theme_color": "#EEEEEE",
-  "background_color": "#29ABE2",
+  "theme_color": "#29ABE2",
+  "background_color": "#EEEEEE",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
