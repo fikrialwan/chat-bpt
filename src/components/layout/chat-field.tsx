@@ -18,11 +18,11 @@ const ChatField = () => {
     event.preventDefault();
     if (status !== STATUS.LOADING) {
       try {
-        setStatus(STATUS.LOADING);
         const formData = new FormData(event.currentTarget);
         const data = Object.fromEntries(formData.entries());
-        console.log(data?.message);
+
         if (data?.message && typeof data.message === "string") {
+          setStatus(STATUS.LOADING);
           messageModel.append({
             message: data.message,
             isUser: true,
@@ -51,8 +51,6 @@ const ChatField = () => {
 
           setStatus(STATUS.SUCCESS);
           jumpToDown();
-        } else {
-          setStatus(STATUS.SUCCESS);
         }
       } catch (_) {
         setStatus(STATUS.ERROR);
