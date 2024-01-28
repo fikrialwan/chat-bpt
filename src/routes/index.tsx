@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import Layout from "../component/layout";
-import Container from "../component/shared/container";
-import Message from "../component/shared/message";
+import Layout from "../components/layout";
+import Container from "../components/shared/container";
+import Message from "../components/shared/message";
 import { useMessages } from "../hooks/message";
 
 const Home = () => {

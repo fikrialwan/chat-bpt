@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { Theme } from "@radix-ui/themes";
+
 import Router from "./config/router";
-import MessageProvider from "./component/provider/message-provider";
+import MessageProvider from "./components/provider/message-provider";
+
+import "@radix-ui/themes/styles.css";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MessageProvider>
-      <Router />
-    </MessageProvider>
+    <Theme>
+      <MessageProvider>
+        <Router />
+      </MessageProvider>
+    </Theme>
   </React.StrictMode>
 );
