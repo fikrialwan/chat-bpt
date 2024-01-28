@@ -1,10 +1,8 @@
-import React from "react";
-
 const SendIcon = ({
-    className,
-    color,
-    ...props
-  }: React.ComponentProps<"svg">) => {
+  className,
+  color,
+  ...props
+}: React.ComponentProps<"svg">) => {
   return (
     <svg
       width={props.width || "24"}
