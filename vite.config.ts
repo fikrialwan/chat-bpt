@@ -28,7 +28,7 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
       },
     ],
     theme_color: "#29ABE2",
-    background_color: "#EEEEEE",
+    background_color: "#29ABE2",
     display: "standalone",
     scope: "/",
     start_url: "/",
