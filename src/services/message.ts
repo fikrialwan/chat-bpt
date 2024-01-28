@@ -16,8 +16,8 @@ export const messageServices = {
       });
 
       return res.data;
-    } catch (error) {
-      throw new Error(error as string);
+    } catch (_) {
+      throw new Error();
     }
   },
 };

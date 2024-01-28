@@ -7,21 +7,21 @@ import { useMessages } from "../../hooks/message";
 import { messageServices } from "../../services/message";
 import { jumpToDown } from "../../utils/jump-to-down";
 import { messageLocalstorage } from "../../utils/localstorage";
+import { STATUS } from "../../config/constants";
 
 const ChatField = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const { setMessages, isLoading, setLoading } = useMessages();
+  const { status, setMessages, setStatus } = useMessages();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!isLoading) {
+    if (status !== STATUS.LOADING) {
       try {
-        setLoading(true);
+        setStatus(STATUS.LOADING);
         const formData = new FormData(event.currentTarget);
         const data = Object.fromEntries(formData.entries());
-
+        console.log(data?.message);
         if (data?.message && typeof data.message === "string") {
           messageModel.append({
             message: data.message,
@@ -49,11 +49,13 @@ const ChatField = () => {
 
           setMessages(messageModel.get());
 
-          setLoading(false);
+          setStatus(STATUS.SUCCESS);
           jumpToDown();
+        } else {
+          setStatus(STATUS.SUCCESS);
         }
-      } catch (error) {
-        console.log(error);
+      } catch (_) {
+        setStatus(STATUS.ERROR);
       }
     }
   };

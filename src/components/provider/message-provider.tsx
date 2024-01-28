@@ -3,16 +3,17 @@ import MessageContext from "../../config/context";
 import { MessagesType } from "../../types/message";
 import { messageModel } from "../../model/message";
 import { MessageContextType } from "../../types/context";
+import { STATUS } from "../../config/constants";
 
 const MessageProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<MessagesType>(messageModel.get());
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<STATUS>(STATUS.SUCCESS);
 
   const providerValue: MessageContextType = {
     messages,
-    isLoading,
+    status,
     setMessages: () => setMessages(messageModel.get()),
-    setLoading,
+    setStatus,
   };
 
   return (

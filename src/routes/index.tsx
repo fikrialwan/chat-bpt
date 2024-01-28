@@ -3,14 +3,15 @@ import Layout from "../components/layout";
 import Container from "../components/shared/container";
 import Message from "../components/shared/message";
 import { useMessages } from "../hooks/message";
-import { LOGIN_FLAG } from "../config/constants";
+import { LOGIN_FLAG, STATUS } from "../config/constants";
 import { accessTokenLocalstorage } from "../utils/localstorage";
 import { useNavigate } from "react-router-dom";
+import Alert from "../components/ui/alert";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const { messages, isLoading } = useMessages();
+  const { messages, status } = useMessages();
 
   useEffect(() => {
     if (!LOGIN_FLAG && !accessTokenLocalstorage.get()) {
@@ -27,14 +28,19 @@ const Home = () => {
               {message}
             </Message>
           ))}
-          {isLoading && (
-            <Message isUser={false}>
+          {status === STATUS.LOADING && (
+            <Message isUser={false} isText={false}>
               <div className="flex gap-1 pt-2 pb-1 items-center">
                 <div className="dot" />
                 <div className="dot" />
                 <div className="dot" />
               </div>
             </Message>
+          )}
+          {status === STATUS.ERROR && (
+            <Alert>
+              Something went wrong! <br /> Please try again
+            </Alert>
           )}
         </div>
         <AlwaysScrollToBottom />

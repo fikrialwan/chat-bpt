@@ -1,14 +1,15 @@
 import { createContext } from "react";
 import { MessageContextType } from "../types/context";
+import { STATUS } from "./constants";
 
 const MessageContext = createContext<MessageContextType>({
-  isLoading: false,
+  status: STATUS.SUCCESS,
   messages: [],
-  setLoading: (isLoading) => {
-    return isLoading;
-  },
   setMessages: (messages) => {
     return messages;
+  },
+  setStatus: (status: STATUS) => {
+    return status;
   },
 });
 
