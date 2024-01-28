@@ -8,6 +8,9 @@ export const messageLocalstorage = {
   set(value: string) {
     return localStorage.setItem(this.key, value);
   },
+  remove() {
+    return localStorage.removeItem(this.key);
+  },
 };
 
 export const accessTokenLocalstorage = {
@@ -19,5 +22,8 @@ export const accessTokenLocalstorage = {
   },
   set(value: string) {
     return localStorage.setItem(this.key, value);
+  },
+  remove() {
+    return localStorage.removeItem(this.key);
   },
 };

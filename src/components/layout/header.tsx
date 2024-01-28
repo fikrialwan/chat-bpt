@@ -5,8 +5,21 @@ import ThreeDotsIcon from "../icons/three-dots";
 import Container from "../shared/container";
 import Dropdown from "../ui/dropdown";
 import LogoutIcon from "../icons/logout";
+import {
+  accessTokenLocalstorage,
+  messageLocalstorage,
+} from "../../utils/localstorage";
+import { useMessages } from "../../hooks/message";
 
 const Header = () => {
+  const { setMessages } = useMessages();
+
+  const handleLogout = async () => {
+    accessTokenLocalstorage.remove();
+    messageLocalstorage.remove();
+    setMessages([]);
+  };
+
   return (
     <header className="bg-white border-b border-gray-200 text-black py-3">
       <Container>
@@ -35,7 +48,10 @@ const Header = () => {
                 </Button>
               }
             >
-              <DropdownMenu.Item className="hover:bg-transparent hover:text-black cursor-pointer flex flex-row gap-2 justify-start items-center">
+              <DropdownMenu.Item
+                onClick={handleLogout}
+                className="hover:bg-transparent hover:text-black cursor-pointer flex flex-row gap-2 justify-start items-center"
+              >
                 <LogoutIcon height={20} width={20} /> Logout
               </DropdownMenu.Item>
             </Dropdown>

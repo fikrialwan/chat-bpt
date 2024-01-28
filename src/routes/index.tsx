@@ -16,7 +16,7 @@ const Home = () => {
     if (!LOGIN_FLAG && !accessTokenLocalstorage.get()) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate, messages]);
 
   return (
     <Layout>
