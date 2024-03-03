@@ -1,3 +1,4 @@
+import { LOGIN_FLAG } from "../config/constants";
 import instance from "../lib/axios";
 import { apiUrl } from "../utils/api-url";
 import { accessTokenLocalstorage } from "../utils/localstorage";
@@ -11,7 +12,7 @@ export const messageServices = {
 
       const res = await instance.post(apiUrl.send, formData, {
         headers: {
-          token: accessTokenLocalstorage.get(),
+          token: LOGIN_FLAG ? undefined : accessTokenLocalstorage.get(),
         },
       });
 
